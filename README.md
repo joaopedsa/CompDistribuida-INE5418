@@ -1,1 +1,1 @@
-# Computa-oDistribuida-INE5418
+# Computação Distribuida - INE5418
