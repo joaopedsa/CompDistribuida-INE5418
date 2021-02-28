@@ -83,20 +83,6 @@ char* getResult(char* socketMessage) {
     return result;
 }
 
-void clearSpaces(char* socketMessage) {
-    char socketMessageWithoutBlankSpace[250];
-    int i = 0;
-    int j = 0;
-    while(socketMessage[i] != '\0') {
-        if(socketMessage[i] != ' ') {
-            socketMessageWithoutBlankSpace[j] = socketMessage[i];
-            j++;
-        }
-        i++;
-    }
-    socketMessage = socketMessageWithoutBlankSpace;
-}
-
 int main() {
     int server_sockfd, client_sockfd;
     int server_len, client_len;
