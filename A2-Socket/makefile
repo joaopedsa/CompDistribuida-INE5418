@@ -1,8 +1,4 @@
-.PHONY : all client server compile-client compile-server compile run
-
-all: compile run
-
-run: server client
+.PHONY : client server compile-client compile-server compile run
 
 compile: compile-server compile-client
 
@@ -13,7 +9,7 @@ compile-server:
 	gcc -o ./server/server ./server/main.c
 
 client:
-	./client/client &
+	./client/client
 
 server:
-	./server/server &
+	./server/server
