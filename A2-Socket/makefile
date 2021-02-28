@@ -6,7 +6,7 @@ compile-client:
 	gcc -o ./client/client ./client/main.c
 
 compile-server:
-	gcc -o ./server/server ./server/main.c
+	gcc -o ./server/server ./server/main.c -pthread
 
 client:
 	./client/client

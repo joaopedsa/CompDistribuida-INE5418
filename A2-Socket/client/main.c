@@ -5,6 +5,7 @@
 #include <arpa/inet.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <string.h>
 
 void inputOperations(char* operations) {
     char c;
@@ -13,6 +14,15 @@ void inputOperations(char* operations) {
     printf("Insira os dados para a calculadora:\n");
     while((c = getchar()) != '\n') {
         operations[i++] = c;
+    }
+}
+
+int isSair(char* input) {
+    char* verifyInput = "sair";
+    if (strcmp(verifyInput, input) == 0) {
+        return 1;
+    } else {
+        return 0;
     }
 }
 
@@ -40,11 +50,14 @@ int main() {
     }
     printf("Connected Client on PORT: %d \n", address.sin_port);
 
-    inputOperations(operations);
-
-    write(sockfd, operations, sizeof(operations));
-    read(sockfd, operations, sizeof(operations));
-    printf("Resultado: %s\n", operations);
-    close(sockfd);
-    exit(0);
+    while(1) {
+        inputOperations(operations);
+        write(sockfd, operations, sizeof(operations));
+        read(sockfd, operations, sizeof(operations));
+        if(isSair(operations)) {
+            exit(0);
+        }
+        printf("Resultado: %s\n", operations);
+        memset(&operations, 0, sizeof(operations));
+    }
 }
