@@ -15,16 +15,16 @@ void *CreateClient(void *args) {
     int client_socket = threadargs->client_socket;
     while(1) {
         read(client_socket, socketMessage, sizeof(socketMessage));
-        printf("Receive Message from Client: %s\n", socketMessage);
+        write(client_socket, socketMessage, sizeof(socketMessage));
     }
 }
 
-void waitConnection(int *server_sockfd) {
+void waitConnection(int server_sockfd) {
     while(1) {
         struct sockaddr_in client_address;
         int client_sockfd;
         int client_len = sizeof(client_address);
-        client_sockfd = accept(*server_sockfd, (struct sockaddr *)&client_address, &client_len);
+        client_sockfd = accept(server_sockfd, (struct sockaddr *)&client_address, &client_len);
         struct ThreadArgs *threadArgs = malloc(sizeof(*threadArgs));
         threadArgs->client_socket = client_sockfd;
         pthread_t pthread;
@@ -32,13 +32,13 @@ void waitConnection(int *server_sockfd) {
     }
 }
 
-void openConnection(int *server_sockfd, struct sockaddr_in *server_address, int port) {
+void openConnection(int server_sockfd, struct sockaddr_in server_address, int port) {
     server_sockfd = socket(AF_INET, SOCK_STREAM, 0);
-    server_address->sin_family = AF_INET;
-    server_address->sin_addr.s_addr = htonl(INADDR_ANY);
-    server_address->sin_port = port;
+    server_address.sin_family = AF_INET;
+    server_address.sin_addr.s_addr = htonl(INADDR_ANY);
+    server_address.sin_port = port;
     int server_len = sizeof(server_address);
-    bind(*server_sockfd, (struct sockaddr *)&server_address, server_len);
-    listen(*server_sockfd, 25);
+    bind(server_sockfd, (struct sockaddr *)&server_address, server_len);
+    listen(server_sockfd, 25);
     printf("Open Connection on Port: %d\n", server_address.sin_port);
 }

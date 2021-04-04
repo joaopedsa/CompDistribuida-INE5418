@@ -11,7 +11,6 @@ char readMemory(int position, int size) {
     return buffer[position];
 }
 
-void writeMemory(int position, int size) {
-    char* readBuffer;
+char writeMemory(int position, int size) {
     return buffer[position];
 }

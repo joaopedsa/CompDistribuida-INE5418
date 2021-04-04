@@ -9,9 +9,10 @@
 
 int main() {
     char* buffer = initMemory(250);
-    int* server_sockfd = malloc(sizeof(int));
-    openConnection(server_sockfd);
+    int server_sockfd;
+    struct sockaddr_in server_address;
+    openConnection(server_sockfd, server_address, 3000);
     waitConnection(server_sockfd);
-    close(*server_sockfd);
+    close(server_sockfd);
     exit(0);
 }
