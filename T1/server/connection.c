@@ -15,7 +15,7 @@ void *createClient(void *args) {
     int client_socket = threadargs->client_socket;
     while(1) {
         read(client_socket, socketMessage, sizeof(socketMessage));
-        printf("Message Receive from Client: %s\n", socketMessage);
+        printf("Receive Message from Client: %s\n", socketMessage);
     }
 }
 
@@ -32,11 +32,11 @@ void waitConnection(int *server_sockfd) {
     }
 }
 
-void openConnection(int *server_sockfd, struct sockaddr_in *server_address) {
+void openConnection(int *server_sockfd, struct sockaddr_in *server_address, int port) {
     server_sockfd = socket(AF_INET, SOCK_STREAM, 0);
     server_address->sin_family = AF_INET;
     server_address->sin_addr.s_addr = htonl(INADDR_ANY);
-    server_address->sin_port = 3456;
+    server_address->sin_port = port;
     int server_len = sizeof(server_address);
     bind(server_sockfd, (struct sockaddr *)&server_address, server_len);
     listen(server_sockfd, 25);

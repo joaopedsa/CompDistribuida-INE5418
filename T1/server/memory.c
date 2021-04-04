@@ -19,3 +19,8 @@ void readMemory(int position, int size) {
     char* readBuffer;
     return buffer[position];
 }
+
+void writeMemory(int position, int size) {
+    char* readBuffer;
+    return buffer[position];
+}

@@ -16,7 +16,7 @@ int main() {
     int server_sockfd;
     struct sockaddr_in server_address;
     char* buffer = initMemory(250);
-    openConnection(&server_sockfd, &server_address);
+    openConnection(&server_sockfd, &server_address, 3000);
     waitConnection(&server_sockfd);
     close(server_sockfd);
     exit(0);
