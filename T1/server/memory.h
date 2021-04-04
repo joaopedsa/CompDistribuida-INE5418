@@ -1,3 +1,3 @@
-void initMemory(int tam_buffer);
+char* initMemory(int tam_buffer);
 
-void readMemory(int position, int size);
+char readMemory(int position, int size);
