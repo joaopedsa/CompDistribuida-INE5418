@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "pthread.h": "c",
+        "stdio.h": "c",
+        "connection.h": "c",
+        "string.h": "c",
+        "*.tcc": "c",
+        "string": "c",
+        "system_error": "c"
+    }
+}
