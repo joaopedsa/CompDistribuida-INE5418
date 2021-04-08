@@ -11,7 +11,7 @@ void inputMessage(char* message) {
     char c;
     int i = 0;
 
-    printf("Insert Message:\n");
+    printf("Insert Instruction:\n");
     while((c = getchar()) != '\n') {
         message[i++] = c;
     }
@@ -32,7 +32,7 @@ int main() {
     struct sockaddr_in address;
     int result;
     char socketMessage[1024];
-    char* writeMessage = "write(0,123,3)";
+    char* writeMessage = "write(0,12345,5)";
     char* readMessage = "read(0, 3)";
     char* logMessage = "log()";
 
@@ -54,10 +54,10 @@ int main() {
     printf("Connected Client on PORT: %d \n", address.sin_port);
 
     while(1) {
-        sleep(1);
-        write(sockfd, writeMessage, sizeof(socketMessage));
+        inputMessage(socketMessage);
+        write(sockfd, socketMessage, sizeof(socketMessage));
         read(sockfd, socketMessage, sizeof(socketMessage));
-        printf("Escrita Feita: %s\n", socketMessage);
+        printf("Mensagem Recebida %s\n", socketMessage);
         memset(&socketMessage, 0, sizeof(socketMessage));
     }
 }

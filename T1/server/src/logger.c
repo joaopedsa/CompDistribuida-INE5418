@@ -8,7 +8,7 @@ char* getServerLog(int position) {
 }
 
 char* getAllLogs() {
-    int numberServers = (int)( sizeof(SERVERS_PORTS) / sizeof(int));
+    int numberServers = (int)(sizeof(SERVERS_PORTS) / sizeof(int));
     char* memory = readAllMemory();
     char* memories = malloc(sizeof(char*));
     strcat(memories, memory);

@@ -16,11 +16,12 @@ char* writeMemory(int position, char* buffer, int tam_buffer) {
     for(; i < tam_buffer && memorySize > (position + i); i++) {
         memory[(position + i)] = buffer[i];
     }
-
+    
     // Rest Buffer
     char* restBuffer = malloc(sizeof(char*));
     int j = 0;
     while(i < tam_buffer) {
+        restBuffer = realloc(restBuffer, sizeof(char));
         restBuffer[j] = buffer[i];
         i++;
         j++;

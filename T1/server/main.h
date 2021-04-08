@@ -5,5 +5,5 @@ int SERVER_PORT = 3456;
 int SIZE_MEMORY = 2;
 
 // Nodos Para Conectar
-int SERVERS_PORTS[] = { 3457 };
+int SERVERS_PORTS[] = { 3457, 3458 };
 
