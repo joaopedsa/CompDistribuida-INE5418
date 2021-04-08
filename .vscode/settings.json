@@ -6,6 +6,9 @@
         "string.h": "c",
         "*.tcc": "c",
         "string": "c",
-        "system_error": "c"
+        "system_error": "c",
+        "iosfwd": "c",
+        "new": "c",
+        "memory.h": "c"
     }
 }

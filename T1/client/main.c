@@ -32,8 +32,9 @@ int main() {
     struct sockaddr_in address;
     int result;
     char socketMessage[1024];
-    char* writeMessage = "escrever(0,123,3)";
+    char* writeMessage = "write(0,123,3)";
     char* readMessage = "read(0, 3)";
+    char* logMessage = "log()";
 
     if(socketMessage == NULL) {
         printf("Could not allocate memory!");
@@ -57,12 +58,6 @@ int main() {
         write(sockfd, writeMessage, sizeof(socketMessage));
         read(sockfd, socketMessage, sizeof(socketMessage));
         printf("Escrita Feita: %s\n", socketMessage);
-        memset(&socketMessage, 0, sizeof(socketMessage));
-
-        sleep(1);
-        write(sockfd, readMessage, sizeof(socketMessage));
-        read(sockfd, socketMessage, sizeof(socketMessage));
-        printf("Leitura Feita: %s\n", socketMessage);
         memset(&socketMessage, 0, sizeof(socketMessage));
     }
 }
