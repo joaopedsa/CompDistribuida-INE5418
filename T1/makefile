@@ -1,4 +1,4 @@
-.PHONY : client server compile-client compile-servers compile run
+.PHONY : client servers compile-client compile-servers compile run
 
 compile: compile-server compile-client
 

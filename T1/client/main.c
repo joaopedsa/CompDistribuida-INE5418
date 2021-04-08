@@ -32,9 +32,6 @@ int main() {
     struct sockaddr_in address;
     int result;
     char socketMessage[1024];
-    char* writeMessage = "write(0,12345,5)";
-    char* readMessage = "read(0, 3)";
-    char* logMessage = "log()";
 
     if(socketMessage == NULL) {
         printf("Could not allocate memory!");
